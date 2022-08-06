@@ -9,7 +9,7 @@ sock       = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 calledName = "pathexec"
 
 ##PathTodo    = "'{\"path\":\"lrwwwwwwww\" , \"owner\":\"pathexecCaller\"}'"
-PathTodo	= "dopath(\"wwlwwlwwlwl\",\"pythonCaller\")"
+PathTodo	= "dopath(\"wwlwwlwwlwl\")"
 requestMsg  = "msg(dopath,request,pythonCaller,RECEIVER,PAYLOAD,1)".replace("RECEIVER",calledName).replace("PAYLOAD",PathTodo)
 alarm       = "msg(alarm,event,python,none,alarm(fire),3)"
 
