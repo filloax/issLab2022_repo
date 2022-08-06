@@ -58,6 +58,7 @@ QActor basicrobot context ctxbasicrobot{
 	Goto work
 	
 	State work{ 
+		printCurrentMessage
 		println("basicrobot  | waiting .................. ")  
 	} 
 	Transition t1   whenMsg     cmd       -> execcmd
@@ -77,6 +78,7 @@ QActor basicrobot context ctxbasicrobot{
 	 Goto work  
 	 
 	State handleObstacle{
+		printCurrentMessage
 		//println("basicrobot | handleObstacle")	
 		run unibo.robot.robotSupport.move( "h" )
 		//printCurrentMessage
@@ -113,6 +115,7 @@ QActor basicrobot context ctxbasicrobot{
     	 
 	
 	State stepDone{   
+		printCurrentMessage
  		run unibo.robot.robotSupport.move( "h" )  //stop the real robot already done ???
 		updateResource [# "stepDone($StepTime)" #]
    		//emit info : info( stepdone($StepTime) )
@@ -122,6 +125,7 @@ QActor basicrobot context ctxbasicrobot{
 	Goto work  
  
 	State stepFail{  		
+		printCurrentMessage
 		setDuration Duration from StartTime
 		run unibo.robot.robotSupport.move( "h" )  //stop the (real) robot
 		[# var TunedDuration = Duration;  
@@ -138,6 +142,7 @@ QActor basicrobot context ctxbasicrobot{
 	Goto work
 	
 	State endwork{ 
+			printCurrentMessage
 		updateResource [# "basicrobot(end)" #]	 		
  		terminate 1
 	}   

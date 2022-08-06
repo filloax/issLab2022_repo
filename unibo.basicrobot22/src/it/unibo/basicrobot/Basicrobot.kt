@@ -41,6 +41,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 				}	 
 				state("work") { //this:State
 					action { //it:State
+						println("$name in ${currentState.stateName} | $currentMsg")
 						println("basicrobot  | waiting .................. ")
 					}
 					 transition(edgeName="t10",targetState="execcmd",cond=whenDispatch("cmd"))
@@ -62,6 +63,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 				}	 
 				state("handleObstacle") { //this:State
 					action { //it:State
+						println("$name in ${currentState.stateName} | $currentMsg")
 						unibo.robot.robotSupport.move( "h"  )
 						updateResourceRep( "obstacle(${CurrentMove})"  
 						)
@@ -100,6 +102,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 				}	 
 				state("stepDone") { //this:State
 					action { //it:State
+						println("$name in ${currentState.stateName} | $currentMsg")
 						unibo.robot.robotSupport.move( "h"  )
 						updateResourceRep( "stepDone($StepTime)"  
 						)
@@ -110,6 +113,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 				}	 
 				state("stepFail") { //this:State
 					action { //it:State
+						println("$name in ${currentState.stateName} | $currentMsg")
 						Duration = getDuration(StartTime)
 						unibo.robot.robotSupport.move( "h"  )
 						 var TunedDuration = Duration;  
@@ -126,6 +130,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 				}	 
 				state("endwork") { //this:State
 					action { //it:State
+						println("$name in ${currentState.stateName} | $currentMsg")
 						updateResourceRep( "basicrobot(end)"  
 						)
 						terminate(1)
